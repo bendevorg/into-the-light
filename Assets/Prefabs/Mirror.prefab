@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62fb2ebd9e7f143c5acb2454e5b8a5f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mirrorLight: {fileID: 0}
 --- !u!114 &114000012613870682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -100,14 +101,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   viewRadius: 24.47
-  viewAngle: 30
+  viewAngle: 0
   targetMask:
     serializedVersion: 2
     m_Bits: 0
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   visibleTargets: []
+  meshResolution: 0.45
 --- !u!114 &114000012876101778
 MonoBehaviour:
   m_ObjectHideFlags: 1

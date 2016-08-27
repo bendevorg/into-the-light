@@ -185,7 +185,7 @@ GameObject:
   - 33: {fileID: 529202274}
   - 65: {fileID: 529202273}
   - 23: {fileID: 529202272}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mirror (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   - 33: {fileID: 1687068944}
   - 65: {fileID: 1687068943}
   - 23: {fileID: 1687068942}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mirror
   m_TagString: Untagged
   m_Icon: {fileID: 0}

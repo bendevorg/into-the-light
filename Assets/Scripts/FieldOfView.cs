@@ -15,26 +15,33 @@ public class FieldOfView : MonoBehaviour {
 	[HideInInspector]
 	public List<Transform> visibleTargets = new List<Transform>();
 
+	public float meshResolution;
+	Mirror mirror;
+
 	void Awake() {
-
-		if(GetComponent<Light>() != null){
-			viewRadius = GetComponent<Light>().range;
-			viewAngle = GetComponent<Light>().spotAngle;
+		if(GetComponent<Mirror>() != null){
+			mirror = GetComponent<Mirror>();
 		}
-
-		
 	}
-
-	void Start(){
-		StartCoroutine ("FindTargetsWithDelay", .2f);
-	}
-
 
 	IEnumerator FindTargetsWithDelay(float delay) {
 		while (true) {
 			yield return new WaitForSeconds (delay);
 			FindVisibleTargets ();
 		}
+	}
+
+	void Update(){
+		
+		if(mirror.mirrorLight.enabled){
+			viewRadius = mirror.mirrorLight.range;
+			viewAngle = mirror.mirrorLight.spotAngle;
+			DrawFieldOfView();
+		}
+	}
+
+	void Start(){
+		StartCoroutine ("FindTargetsWithDelay", .2f);
 	}
 
 	void FindVisibleTargets() {
@@ -54,6 +61,26 @@ public class FieldOfView : MonoBehaviour {
 		}
 	}
 
+	void DrawFieldOfView(){
+
+	int stepCount = Mathf.RoundToInt(viewAngle * meshResolution);
+	float stepAngleSize = viewAngle/stepCount;
+
+	for(int i=0; i<=stepCount;i++){
+
+		float angle = transform.eulerAngles.y - viewAngle/2 + stepAngleSize * i;
+		RaycastHit hit;
+
+		if (Physics.Raycast(transform.position, transform.position + DirFromAngle(angle,true) * viewRadius, out hit, viewRadius, obstacleMask) ){
+			Debug.DrawLine(transform.position, hit.point, Color.red);
+			print(hit.collider.name);	
+		}
+		
+
+	}
+
+
+	}
 	public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal) {
 		if (!angleIsGlobal) {
 			angleInDegrees += transform.eulerAngles.y;

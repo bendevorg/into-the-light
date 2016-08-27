@@ -4,7 +4,7 @@ using System.Collections;
 [RequireComponent(typeof(Light))]
 public class Mirror : ReflectEntity {
 
-	Light mirrorLight;
+	public Light mirrorLight;
 
 	void Awake(){
 		if(GetComponent<Light>() != null){
