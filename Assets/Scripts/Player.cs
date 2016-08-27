@@ -9,10 +9,12 @@ public class Player : MonoBehaviour {
 	Camera viewCamera;
 	PlayerController controller;
 	Vector3 moveVelocity;
+	// CameraFollow cameraScript;
 
 	void Start () {
 		controller = GetComponent<PlayerController>();
 		viewCamera = Camera.main;
+		// cameraScript = viewCamera.GetComponent<CameraFollow>();
 	}
 	
 	// Update is called once per frame
@@ -30,6 +32,8 @@ public class Player : MonoBehaviour {
 			Vector3 point = ray.GetPoint(rayDistance);
 			// Debug.DrawLine(ray.origin, point, Color.red);
 			controller.LookAt(point);
+			// cameraScript.Move(point);
+			
 		}
 	}
 

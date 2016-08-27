@@ -8,9 +8,9 @@ public class CameraFollow : MonoBehaviour
     Vector3 positionOffset;
     // Quaternion rotationOffset;
 
-    public float distance = 5f;
-    public float targetHeight = 1.2f;
-	public float cameraSpeed = 0.5f;
+    public float distance = 15f;
+    public float targetHeight = 1f;
+	public float cameraSpeed = 0.035f;
 
     float x = 0;
     float y = 0;
@@ -18,6 +18,7 @@ public class CameraFollow : MonoBehaviour
 
     Vector3 playerVelocity;
 	
+    Camera mainCamera;
 
     void Start()
     {
@@ -32,11 +33,27 @@ public class CameraFollow : MonoBehaviour
 
         // target = GameObject.FindGameObjectWithTag("Target").transform;
 
+        // mainCamera = GetComponent<Camera>();
+
     }
 
     void Update(){
 		playerVelocity = player.GetVelocity();
+
+		// Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+		// Plane groundPlane =  new Plane(Vector3.up, Vector3.zero);
+		// float rayDistance;
+
+		// if (groundPlane.Raycast(ray, out rayDistance)) {
+		// 	Vector3 point = ray.GetPoint(rayDistance);
+			// Debug.DrawLine(ray.origin, point, Color.red);
+			// controller.LookAt(point);
+		// }
     }
+
+    // public void Move(Vector3 point){
+    //     playerVelocity = point;
+    // }
 
     void FixedUpdate() {
 		// Debug.Log("X: " + x);
@@ -52,13 +69,12 @@ public class CameraFollow : MonoBehaviour
         // Debug.Log(rotation);
         // Debug.Log(playerVelocity);
 
-
 		// POSITION CAMERA:
         Vector3 offset = Vector3.right * playerVelocity.x;
 		Vector3 newPosition = (player.transform.position + offset) - (rotation * Vector3.forward * distance + new Vector3(0, -targetHeight, 0));
 		// transform.position = position;
 
-        transform.position = new Vector3(transform.position.x, transform.position.y, newPosition.z);
+        // transform.position = new Vector3(transform.position.x, transform.position.y, newPosition.z);
 		transform.position = Vector3.Lerp(transform.position, newPosition, cameraSpeed);
         // transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed);
 		// transform.position = Vector3.Lerp(transform.position, camTarget.transform.position, speed);
