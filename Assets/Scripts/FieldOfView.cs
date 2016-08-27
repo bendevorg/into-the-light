@@ -6,14 +6,14 @@ using System.Collections.Generic;
 public class FieldOfView : MonoBehaviour {
 
 	public float viewRadius;
-	[Range(0,360)]
+	[HideInInspector]
 	public float viewAngle;
 
-	public LayerMask targetMask;
-	public LayerMask obstacleMask;
+	public LayerMask hittableMask;
+	public LayerMask mirrorMask;
 
 	[HideInInspector]
-	public List<Transform> visibleTargets = new List<Transform>();
+	public List<Transform> visibleTargets;
 
 	public float meshResolution;
 	Mirror mirror;
@@ -31,56 +31,62 @@ public class FieldOfView : MonoBehaviour {
 		}
 	}
 
-	void Update(){
-		
-		if(mirror.mirrorLight.enabled){
-			viewRadius = mirror.mirrorLight.range;
-			viewAngle = mirror.mirrorLight.spotAngle;
-			DrawFieldOfView();
-		}
-	}
-
 	void Start(){
+		//FindTargets += FindVisibleTargets;
 		StartCoroutine ("FindTargetsWithDelay", .2f);
 	}
 
 	void FindVisibleTargets() {
-		visibleTargets.Clear ();
-		Collider[] targetsInViewRadius = Physics.OverlapSphere (transform.position, viewRadius, targetMask);
+		Collider[] targetsInViewRadius = Physics.OverlapSphere (transform.position, viewRadius, hittableMask);
+	
+		if (mirror.mirrorLight.enabled){
 
-		for (int i = 0; i < targetsInViewRadius.Length; i++) {
-			Transform target = targetsInViewRadius [i].transform;
-			Vector3 dirToTarget = (target.position - transform.position).normalized;
-			if (Vector3.Angle (transform.forward, dirToTarget) < viewAngle / 2) {
-				float dstToTarget = Vector3.Distance (transform.position, target.position);
+			viewAngle = mirror.mirrorLight.spotAngle;
+			visibleTargets = new List<Transform>();
 
-				if (!Physics.Raycast (transform.position, dirToTarget, dstToTarget, obstacleMask)) {
-					visibleTargets.Add (target);
+			DrawFieldOfView();
+
+			for (int i = 0; i < targetsInViewRadius.Length; i++) {
+				bool targetInFieldOfViews = false;
+
+				for(int j = 0; j < visibleTargets.Count; j++){
+					if(targetsInViewRadius[i].transform.position == visibleTargets[j].position){
+						targetInFieldOfViews = true;
+						break;
+					}
 				}
+
+				if(!targetInFieldOfViews){
+					if(targetsInViewRadius[i].GetComponent<Mirror>() != null && targetsInViewRadius[i].GetComponent<Mirror>().mirrorLight.enabled){
+						targetsInViewRadius[i].GetComponent<Mirror>().Reflect(false);
+					}
+				}
+
 			}
 		}
+
 	}
 
 	void DrawFieldOfView(){
 
-	int stepCount = Mathf.RoundToInt(viewAngle * meshResolution);
-	float stepAngleSize = viewAngle/stepCount;
+		int stepCount = Mathf.RoundToInt(viewAngle * meshResolution);
+		float stepAngleSize = viewAngle/stepCount;
 
-	for(int i=0; i<=stepCount;i++){
+		for(int i=0; i<=stepCount;i++){
 
-		float angle = transform.eulerAngles.y - viewAngle/2 + stepAngleSize * i;
-		RaycastHit hit;
+			float angle = transform.eulerAngles.y - viewAngle/2 + stepAngleSize * i;
+			RaycastHit hit;
 
-		if (Physics.Raycast(transform.position, transform.position + DirFromAngle(angle,true) * viewRadius, out hit, viewRadius, obstacleMask) ){
-			Debug.DrawLine(transform.position, hit.point, Color.red);
-			print(hit.collider.name);	
+			if (Physics.Raycast(transform.position, transform.position + DirFromAngle(angle,true) * viewRadius, out hit, viewRadius, mirrorMask) ){
+				Debug.DrawLine(transform.position, hit.point, Color.red);
+				visibleTargets.Add(hit.collider.transform);
+				if (hit.collider.GetComponent<Mirror>() != null){
+					hit.collider.GetComponent<Mirror>().Reflect(true);
+				}	
+			}	
 		}
-		
-
 	}
 
-
-	}
 	public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal) {
 		if (!angleIsGlobal) {
 			angleInDegrees += transform.eulerAngles.y;

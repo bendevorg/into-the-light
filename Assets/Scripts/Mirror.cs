@@ -13,6 +13,7 @@ public class Mirror : ReflectEntity {
 	}
 
 	public void Reflect(bool reflectStatus){
+		print(transform.name);
 		mirrorLight.enabled = reflectStatus;
 	}
 
