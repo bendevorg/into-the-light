@@ -6,6 +6,11 @@ public class MirrorController : MonoBehaviour {
 	public Mirror playerMirror;
 	Mirror currentMirror;
 
+	void Awake(){
+	
+
+	}
+
 	void Start(){
 
 		if (playerMirror != null){

@@ -21,8 +21,8 @@ GameObject:
   - 4: {fileID: 4000010949251128}
   - 108: {fileID: 108000012672182326}
   - 114: {fileID: 114000010756780580}
-  - 136: {fileID: 136000013913100850}
-  - 114: {fileID: 114000011047339586}
+  - 136: {fileID: 136000013824548792}
+  - 114: {fileID: 114000011917535252}
   m_Layer: 0
   m_Name: Spotlight
   m_TagString: Untagged
@@ -107,7 +107,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &114000011047339586
+--- !u!114 &114000011917535252
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -122,7 +122,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   bordinhaPercentual: 15
---- !u!136 &136000013913100850
+--- !u!136 &136000013824548792
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
