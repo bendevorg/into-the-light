@@ -107,11 +107,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0, z: 0, w: 0}
-<<<<<<< HEAD
---- !u!114 &114000011047339586
-=======
 --- !u!114 &114000011917535252
->>>>>>> mirror
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -126,11 +122,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   bordinhaPercentual: 15
-<<<<<<< HEAD
---- !u!136 &136000013913100850
-=======
 --- !u!136 &136000013824548792
->>>>>>> mirror
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
