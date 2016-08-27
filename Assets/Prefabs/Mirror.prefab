@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dafc90245bfe9e2408e358f71deace2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SampleCount: 19
+  SampleCount: 1
   ScatteringCoef: 1
   ExtinctionCoef: 0
   SkyboxExtinctionCoef: 0

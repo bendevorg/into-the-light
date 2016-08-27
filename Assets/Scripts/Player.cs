@@ -5,11 +5,14 @@ using System.Collections;
 public class Player : MonoBehaviour {
 
 	public float moveSpeed;
+
+	Camera viewCamera;
 	PlayerController controller;
 	Vector3 moveVelocity;
 
 	void Start () {
 		controller = GetComponent<PlayerController>();
+		viewCamera = Camera.main;
 	}
 	
 	// Update is called once per frame
@@ -18,6 +21,16 @@ public class Player : MonoBehaviour {
 		moveVelocity = moveInput.normalized * moveSpeed;
 		// Debug.Log(moveVelocity);
 		controller.Move(moveVelocity);
+
+		Ray ray = viewCamera.ScreenPointToRay(Input.mousePosition);
+		Plane groundPlane =  new Plane(Vector3.up, Vector3.zero);
+		float rayDistance;
+
+		if (groundPlane.Raycast(ray, out rayDistance)) {
+			Vector3 point = ray.GetPoint(rayDistance);
+			// Debug.DrawLine(ray.origin, point, Color.red);
+			controller.LookAt(point);
+		}
 	}
 
 	public Vector3 GetVelocity(){
