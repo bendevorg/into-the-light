@@ -4,50 +4,63 @@ using System.Collections;
 public class CameraFollow : MonoBehaviour
 {
 
-    // public float distanceToPlayer = 5;
+    Player player;
+    Vector3 positionOffset;
+    // Quaternion rotationOffset;
 
-    Transform player;
-    Vector3 posOffset;
-    Quaternion rotOffset;
-
-    Transform target;
     public float distance = 5f;
     public float targetHeight = 1.2f;
-	public float speed = 0.5f;
+	public float cameraSpeed = 0.5f;
 
     float x = 0;
     float y = 0;
+    float z = 0;
+
+    Vector3 playerVelocity;
+	
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        posOffset = player.position - transform.position;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        // positionOffset = player.transform.position - transform.position;
         //  rotOffset = transform.rotation * Quaternion.Inverse(player.rotation);
 
-        Vector3 angles = transform.eulerAngles;
-        x = angles.x;
-        y = angles.y;
+        Vector3 cameraAngles = transform.eulerAngles;
+        x = cameraAngles.x;
+        y = cameraAngles.y;
+		z = cameraAngles.z;
 
         // target = GameObject.FindGameObjectWithTag("Target").transform;
 
     }
 
-    void FixedUpdate() {
-		Debug.Log("X: " + x);
-		Debug.Log("Y: " + y);
+    void Update(){
+		playerVelocity = player.GetVelocity();
+    }
 
-		y = player.eulerAngles.y;
+    void FixedUpdate() {
+		// Debug.Log("X: " + x);
+		// Debug.Log("Y: " + y);
+		// Debug.Log("Z: " + z);
+		
+		// playerVelocity = player.GetVelocity();
+		// y = player.eulerAngles.y;
 
 		// ROTATE CAMERA:
-		Quaternion rotation = Quaternion.Euler(x, y, 0);
-		// transform.rotation = rotation;
+		Quaternion rotation = Quaternion.Euler(x, y, z);
+		transform.rotation = rotation;
+        // Debug.Log(rotation);
+        // Debug.Log(playerVelocity);
+
 
 		// POSITION CAMERA:
-		Vector3 position = player.position - (rotation * Vector3.forward * distance + new Vector3(0, -targetHeight, 0));
+        Vector3 offset = Vector3.right * playerVelocity.x;
+		Vector3 newPosition = (player.transform.position + offset) - (rotation * Vector3.forward * distance + new Vector3(0, -targetHeight, 0));
 		// transform.position = position;
 
-		transform.position = Vector3.Lerp(transform.position, position, speed);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed);
+        transform.position = new Vector3(transform.position.x, transform.position.y, newPosition.z);
+		transform.position = Vector3.Lerp(transform.position, newPosition, cameraSpeed);
+        // transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed);
 		// transform.position = Vector3.Lerp(transform.position, camTarget.transform.position, speed);
         // transform.rotation = Quaternion.Lerp(transform.rotation, camTarget.transform.rotation, speed);
 
