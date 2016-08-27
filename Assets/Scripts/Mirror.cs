@@ -6,7 +6,7 @@ public class Mirror : ReflectEntity {
 
 	Light mirrorLight;
 
-	void Start(){
+	void Awake(){
 		if(GetComponent<Light>() != null){
 			mirrorLight = GetComponent<Light>();
 		}
