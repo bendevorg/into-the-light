@@ -8,8 +8,6 @@ public class Spotlight : MonoBehaviour {
 	CapsuleCollider spotlightCollider;
 	Light spotlightLight;
 
-	
-
 	[Range(0,100)]
 	public float bordinhaPercentual;
 

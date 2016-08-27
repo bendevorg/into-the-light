@@ -22,6 +22,7 @@ GameObject:
   - 108: {fileID: 108000013029122590}
   - 114: {fileID: 114000012876101778}
   - 114: {fileID: 114000010486278832}
+  - 114: {fileID: 114000012613870682}
   m_Layer: 0
   m_Name: Mirror
   m_TagString: Untagged
@@ -87,6 +88,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62fb2ebd9e7f143c5acb2454e5b8a5f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mirrorLight: {fileID: 0}
+--- !u!114 &114000012613870682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014082243572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee331ae734daf42038659cd3c9a336ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewRadius: 24.47
+  viewAngle: 0
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 0
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 512
+  visibleTargets: []
+  meshResolution: 0.45
 --- !u!114 &114000012876101778
 MonoBehaviour:
   m_ObjectHideFlags: 1
