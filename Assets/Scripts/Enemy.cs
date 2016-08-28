@@ -7,25 +7,21 @@ public class Enemy : LivingEntity {
 	public Material black;
 	public Material white;
 
-	bool morto = false;
+	public ParticleSystem hitEffect;
 
 	protected override void Start () {
 		base.Start();
 		rend = GetComponent<Renderer>();
-        // rend.material = material1;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetKeyDown("space"))
-		{
-			morto = true;
-		}
-	}
-	void FixedUpdate() {
-		if (morto)
-		{
-			rend.material.Lerp(rend.material, white, 0.1f);
-		}
+
+	public override void TakeHit (float damage, Vector3 hitPoint, Vector3 hitDirection)
+	{
+		hitEffect.transform.rotation = Quaternion.FromToRotation(Vector3.forward, hitDirection);
+		hitEffect.Play();
+		float relativeHealth = 1 - (health/startingHealth);
+		print(relativeHealth);
+		rend.material.Lerp(black, white, relativeHealth);
+
+		base.TakeHit (damage, hitPoint, hitDirection);
 	}
 }

@@ -76,14 +76,14 @@ public class FieldOfView : MonoBehaviour {
 
 			float angle = transform.eulerAngles.y - viewAngle/2 + stepAngleSize * i;
 			RaycastHit hit;
-
-			if (Physics.Raycast(transform.position, transform.position + DirFromAngle(angle,true) * viewRadius, out hit, viewRadius, mirrorMask) ){
+			Vector3 rayDirection = transform.position + DirFromAngle(angle,true) * viewRadius;
+			if (Physics.Raycast(transform.position, rayDirection, out hit, viewRadius, mirrorMask) ){
 				//Debug.DrawLine(transform.position, hit.point, Color.red);
 				if (hit.collider.GetComponent<Mirror>() != null){
 					visibleTargets.Add(hit.collider.transform);
 					hit.collider.GetComponent<Mirror>().Reflect(true);
 				} else if(hit.collider.GetComponent<IDamageable>() != null){
-					hit.collider.GetComponent<IDamageable>().TakeHit(1, hit);
+					hit.collider.GetComponent<IDamageable>().TakeHit(1, hit.point, rayDirection);
 				}
 			}	
 		}
