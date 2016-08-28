@@ -24,6 +24,7 @@ GameObject:
   - 136: {fileID: 136000013824548792}
   - 114: {fileID: 114000011917535252}
   - 82: {fileID: 82000010728848290}
+  - 114: {fileID: 114000012703347742}
   m_Layer: 0
   m_Name: Spotlight
   m_TagString: Untagged
@@ -54,14 +55,14 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: fcad67b4f8f904aec9abe7e4b9a01dc5, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.84
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -163,15 +164,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dafc90245bfe9e2408e358f71deace2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SampleCount: 1
+  SampleCount: 3
   ScatteringCoef: 1
-  ExtinctionCoef: 0
-  SkyboxExtinctionCoef: 0
+  ExtinctionCoef: 0.1
+  SkyboxExtinctionCoef: 1
   MieG: 0
   HeightFog: 0
-  HeightScale: 0.5
+  HeightScale: 0
   GroundLevel: 0
-  Noise: 1
+  Noise: 0
   NoiseScale: 41.21
   NoiseIntensity: 23.23
   NoiseIntensityOffset: 0.3
@@ -202,7 +203,24 @@ MonoBehaviour:
   maxIntensity: 3.98
   maxAngle: 24.47
   speedToCreate: 0.3
+  speedToDestroy: 0.1
   bordinhaPercentual: 15
+--- !u!114 &114000012703347742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011943998710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5b161f056c714fd8a5d5c1a9f0d8eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  fadeInTime: 1
+  fadeOutTime: 0.03
+  maxVolume: 1
+  playing: 0
 --- !u!136 &136000013824548792
 CapsuleCollider:
   m_ObjectHideFlags: 1

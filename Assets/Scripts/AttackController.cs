@@ -6,11 +6,14 @@ public class AttackController : MonoBehaviour {
 	public Projectile projectile;
 
 	public float attackSpeed;
-	public float circleSpeedDiscount = 5;
+	public float circleSpeedDiscount;
+	public float waveSpeedDiscount;
+
+	SoundManager soundManager;
 
 	// Use this for initialization
 	void Start () {
-	
+		soundManager = GetComponent<SoundManager>();
 	}
 	
 	// Update is called once per frame
@@ -26,21 +29,20 @@ public class AttackController : MonoBehaviour {
 
 			case 0:
 				StartCoroutine(LineShoot());
+				soundManager.Play();
 				break;
 
 			case 1:
 				WaveShoot();
+				soundManager.Play();
 				break;
 
 			case 2:
 				ThreeSixtyNoScope();
+				soundManager.Play();
 				break;
 
 		}
-
-		Projectile newProjectile;
-		newProjectile = Instantiate(projectile, transform.position, transform.rotation) as Projectile;
-		newProjectile.SetSpeed(attackSpeed);
 
 	}
 
@@ -69,15 +71,19 @@ public class AttackController : MonoBehaviour {
 		while (count<=amount){
 
 			Projectile newProjectile;
-			newProjectile = Instantiate(projectile, transform.position, Quaternion.Euler(0f, transform.rotation.y + angle * count, 0f)) as Projectile;
-			newProjectile.SetSpeed(attackSpeed);
+			newProjectile = Instantiate(projectile, transform.position, Quaternion.Euler(0f, transform.eulerAngles.y + angle * count, 0f)) as Projectile;
+			newProjectile.SetSpeed(attackSpeed/waveSpeedDiscount);
 
-			newProjectile = Instantiate(projectile, transform.position, Quaternion.Euler(0f, transform.rotation.y - angle * count, 0f)) as Projectile;
-			newProjectile.SetSpeed(attackSpeed/10);
+			newProjectile = Instantiate(projectile, transform.position, Quaternion.Euler(0f, transform.eulerAngles.y -angle * count, 0f)) as Projectile;
+			newProjectile.SetSpeed(attackSpeed/waveSpeedDiscount);
 
 			count ++;
 
 		}
+
+		Projectile frontProjectile;
+		frontProjectile = Instantiate(projectile, transform.position, transform.rotation) as Projectile;
+		frontProjectile.SetSpeed(attackSpeed);
 		
 
 	}
