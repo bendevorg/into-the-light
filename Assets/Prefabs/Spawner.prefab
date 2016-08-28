@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011711289096}
   - 114: {fileID: 114000013610120314}
+  - 114: {fileID: 114000011615706388}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -40,6 +41,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &114000011615706388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011871905444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e88b875d23e3450aa90d2d302aea983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - enemyCount: 10
+    timeBetweenSpawns: 5
+  - enemyCount: 20
+    timeBetweenSpawns: 3
+  enemy: {fileID: 4000013059024584, guid: e06304eab43354d90a855366be1532f0, type: 2}
 --- !u!114 &114000013610120314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -58,4 +76,3 @@ MonoBehaviour:
   maxSpawnTime: 5
   minDurationTime: 1
   maxDurationTime: 6
-  maps: {fileID: 0}
