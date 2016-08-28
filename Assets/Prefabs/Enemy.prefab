@@ -24,6 +24,7 @@ GameObject:
   - 23: {fileID: 23000010214071994}
   - 114: {fileID: 114000011135922362}
   - 195: {fileID: 195000013198018540}
+  - 114: {fileID: 114000012458074410}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Untagged
@@ -190,6 +191,22 @@ MonoBehaviour:
   idleEffect: {fileID: 198000012002270682}
   hitEffect: {fileID: 198000013535594242}
   deathEffect: {fileID: 198000013283862490}
+  attackCooldown: 3
+--- !u!114 &114000012458074410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010388784536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39ad9e4ecbeb2465fb4ee80e7f6621f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 114000011330465712, guid: 1ace53297a840430eb458747213bea9d,
+    type: 2}
+  attackSpeed: 40
+  circleSpeedDiscount: 5
 --- !u!136 &136000013792601260
 CapsuleCollider:
   m_ObjectHideFlags: 1

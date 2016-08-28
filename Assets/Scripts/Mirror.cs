@@ -6,6 +6,8 @@ public class Mirror : MonoBehaviour {
 	[HideInInspector]
 	public Light mirrorLight;
 
+	AudioSource myAudioSource;
+
 	void Awake(){
 		if(GetComponent<Light>() != null){
 			mirrorLight = GetComponent<Light>();

@@ -83,7 +83,7 @@ public class Spawner : MonoBehaviour {
 		}
 
 		Enemy spawnedEnemy = Instantiate(enemy, spawnTile.position + Vector3.up, Quaternion.identity) as Enemy;
-		spawnedEnemy.OnDeath += OnEnemyDeath;
+		spawnedEnemy.GetComponent<LivingEntity>().OnDeath += OnEnemyDeath;
 	}
 
 	void OnPlayerDeath() {

@@ -2,6 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(CapsuleCollider))]
+[RequireComponent(typeof(AudioSource))]
 public class Spotlight : MonoBehaviour {
 
 	public LayerMask collisionMask;
@@ -22,8 +23,11 @@ public class Spotlight : MonoBehaviour {
 	[Range(0,100)]
 	public float bordinhaPercentual;
 
+	AudioSource myAudioSource;
+
 	public void Create(float duration){
 		player = GameObject.FindGameObjectWithTag("Player").transform;
+		myAudioSource = GetComponent<AudioSource>();
 		StartCoroutine("CreateSpotlight", duration);
 	}
 
@@ -87,20 +91,26 @@ public class Spotlight : MonoBehaviour {
         if (collider.GetComponent<MirrorController>()) {
 			collider.GetComponent<MirrorController>().SetLight(true);
 			hasPlayer = true;
-		} 
+		} if (!myAudioSource.enabled){
+			myAudioSource.enabled = true;
+		}
     }
 
 	void OnTriggerStay(Collider collider) {
         if (collider.GetComponent<MirrorController>()) {
 			collider.GetComponent<MirrorController>().SetLight(true);
 			hasPlayer = true;
-		} 
+		}
+
     }
 
 	void OnTriggerExit(Collider collider) {
         if (collider.GetComponent<MirrorController>()) {
 			collider.GetComponent<MirrorController>().SetLight(false);
 			hasPlayer = false;
+			myAudioSource.Stop();
+		} if (myAudioSource.enabled){
+			myAudioSource.enabled = false;
 		}
     }
 }
