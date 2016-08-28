@@ -78,11 +78,13 @@ public class FieldOfView : MonoBehaviour {
 			RaycastHit hit;
 
 			if (Physics.Raycast(transform.position, transform.position + DirFromAngle(angle,true) * viewRadius, out hit, viewRadius, mirrorMask) ){
-				Debug.DrawLine(transform.position, hit.point, Color.red);
-				visibleTargets.Add(hit.collider.transform);
+				//Debug.DrawLine(transform.position, hit.point, Color.red);
 				if (hit.collider.GetComponent<Mirror>() != null){
+					visibleTargets.Add(hit.collider.transform);
 					hit.collider.GetComponent<Mirror>().Reflect(true);
-				}	
+				} else if(hit.collider.GetComponent<LivingEntity>() != null){
+					hit.collider.GetComponent<LivingEntity>().TakeHit(1, hit);
+				}
 			}	
 		}
 	}

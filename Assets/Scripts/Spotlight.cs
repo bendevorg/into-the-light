@@ -19,8 +19,9 @@ public class Spotlight : MonoBehaviour {
 		Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit, 100f, collisionMask, QueryTriggerInteraction.Ignore)){
+        if(Physics.Raycast(ray, out hit, spotlightLight.range, collisionMask, QueryTriggerInteraction.Ignore)){
 
+			print(hit.distance);
 			CreateCollider(hit.distance);
 
         }
