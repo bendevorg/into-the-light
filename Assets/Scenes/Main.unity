@@ -356,6 +356,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8781ded575cb4a39a16991f2c51f381, type: 2}
   m_IsPrefabParent: 0
+--- !u!198 &1620341909 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198000012002270682, guid: e06304eab43354d90a855366be1532f0,
+    type: 2}
+  m_PrefabInternal: {fileID: 2092968471}
 --- !u!1001 &1852393510
 Prefab:
   m_ObjectHideFlags: 0
@@ -444,39 +449,34 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114000011135922362, guid: e06304eab43354d90a855366be1532f0,
         type: 2}
-      propertyPath: startingHealth
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000013535594242, guid: e06304eab43354d90a855366be1532f0,
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 2092968472}
+    - target: {fileID: 114000011135922362, guid: e06304eab43354d90a855366be1532f0,
         type: 2}
-      propertyPath: lengthInSec
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000013535594242, guid: e06304eab43354d90a855366be1532f0,
+      propertyPath: deathEffect
+      value: 
+      objectReference: {fileID: 2092968473}
+    - target: {fileID: 114000011135922362, guid: e06304eab43354d90a855366be1532f0,
         type: 2}
-      propertyPath: InitialModule.randomizeRotationDirection
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000013535594242, guid: e06304eab43354d90a855366be1532f0,
+      propertyPath: idleEffect
+      value: 
+      objectReference: {fileID: 1620341909}
+    - target: {fileID: 198000013283862490, guid: e06304eab43354d90a855366be1532f0,
         type: 2}
-      propertyPath: moveWithTransform
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000013535594242, guid: e06304eab43354d90a855366be1532f0,
-        type: 2}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000013535594242, guid: e06304eab43354d90a855366be1532f0,
-        type: 2}
-      propertyPath: EmissionModule.cntmax0
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 198000013535594242, guid: e06304eab43354d90a855366be1532f0,
-        type: 2}
-      propertyPath: EmissionModule.cnt0
-      value: 100
+      propertyPath: EmissionModule.rate.scalar
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e06304eab43354d90a855366be1532f0, type: 2}
   m_IsPrefabParent: 0
+--- !u!198 &2092968472 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198000013535594242, guid: e06304eab43354d90a855366be1532f0,
+    type: 2}
+  m_PrefabInternal: {fileID: 2092968471}
+--- !u!198 &2092968473 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 198000013283862490, guid: e06304eab43354d90a855366be1532f0,
+    type: 2}
+  m_PrefabInternal: {fileID: 2092968471}
