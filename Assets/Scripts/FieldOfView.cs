@@ -82,8 +82,8 @@ public class FieldOfView : MonoBehaviour {
 				if (hit.collider.GetComponent<Mirror>() != null){
 					visibleTargets.Add(hit.collider.transform);
 					hit.collider.GetComponent<Mirror>().Reflect(true);
-				} else if(hit.collider.GetComponent<LivingEntity>() != null){
-					hit.collider.GetComponent<LivingEntity>().TakeHit(1, hit);
+				} else if(hit.collider.GetComponent<IDamageable>() != null){
+					hit.collider.GetComponent<IDamageable>().TakeHit(1, hit);
 				}
 			}	
 		}

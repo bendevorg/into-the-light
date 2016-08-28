@@ -12,6 +12,7 @@ public class Player : LivingEntity {
 	// CameraFollow cameraScript;
 
 	protected override void Start () {
+		base.Start();
 		controller = GetComponent<PlayerController>();
 		viewCamera = Camera.main;
 		// cameraScript = viewCamera.GetComponent<CameraFollow>();

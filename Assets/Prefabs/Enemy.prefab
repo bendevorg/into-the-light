@@ -23,7 +23,7 @@ GameObject:
   - 136: {fileID: 136000013792601260}
   - 23: {fileID: 23000010214071994}
   - 114: {fileID: 114000011135922362}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010388784536}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.31, y: 1, z: 4.05}
+  m_LocalPosition: {x: -3.02, y: 1, z: 13.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -121,7 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342841ea92fd14faab008fb447c516ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 0
+  startingHealth: 10
+  black: {fileID: 2100000, guid: 504431ac5bc094b9b9bd2bad480a42a9, type: 2}
+  white: {fileID: 2100000, guid: 695b76dd65b2e4f6ca21d426275260b2, type: 2}
 --- !u!136 &136000013792601260
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -189,7 +191,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 2
+      scalar: 2.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -569,7 +571,7 @@ ParticleSystem:
     enabled: 1
     type: 4
     radius: 1.2
-    angle: 51.787216
+    angle: 51.787224
     length: 0
     boxX: 1
     boxY: 1

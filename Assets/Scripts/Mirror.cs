@@ -3,7 +3,7 @@ using System.Collections;
 
 [RequireComponent(typeof(Light))]
 public class Mirror : MonoBehaviour {
-
+	[HideInInspector]
 	public Light mirrorLight;
 
 	void Awake(){

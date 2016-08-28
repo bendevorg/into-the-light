@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour
 
     public float distance = 15f;
     public float targetHeight = 1f;
-	public float cameraSpeed = 0.035f;
+	public float cameraSpeed = 0.5f;
 
     float x = 0;
     float y = 0;
@@ -71,11 +71,11 @@ public class CameraFollow : MonoBehaviour
 
 		// POSITION CAMERA:
         Vector3 offset = Vector3.right * playerVelocity.x;
-		Vector3 newPosition = (player.transform.position + offset) - (rotation * Vector3.forward * distance + new Vector3(0, -targetHeight, 0));
-		// transform.position = position;
+		Vector3 newPosition = player.transform.position - (rotation * Vector3.forward * distance + new Vector3(0, -targetHeight, 0));
+		transform.position = newPosition;
 
         // transform.position = new Vector3(transform.position.x, transform.position.y, newPosition.z);
-		transform.position = Vector3.Lerp(transform.position, newPosition, cameraSpeed);
+		// transform.position = Vector3.Lerp(transform.position, newPosition, cameraSpeed * Time.fixedDeltaTime);
         // transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed);
 		// transform.position = Vector3.Lerp(transform.position, camTarget.transform.position, speed);
         // transform.rotation = Quaternion.Lerp(transform.rotation, camTarget.transform.rotation, speed);

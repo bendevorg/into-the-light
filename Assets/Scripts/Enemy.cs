@@ -10,6 +10,7 @@ public class Enemy : LivingEntity {
 	bool morto = false;
 
 	protected override void Start () {
+		base.Start();
 		rend = GetComponent<Renderer>();
         // rend.material = material1;
 	}

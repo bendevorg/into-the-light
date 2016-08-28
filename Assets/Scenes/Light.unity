@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.06578407, g: 0.07277716, b: 0.083961405, a: 1}
+  m_IndirectSpecularColor: {r: 0.06578407, g: 0.07277716, b: 0.08396139, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -300,6 +300,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!1001 &1564293346
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000010285201918, guid: b89a1325500454185a8a11f46896ba7b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010285201918, guid: b89a1325500454185a8a11f46896ba7b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010285201918, guid: b89a1325500454185a8a11f46896ba7b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -5.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010285201918, guid: b89a1325500454185a8a11f46896ba7b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.40777278
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010285201918, guid: b89a1325500454185a8a11f46896ba7b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010285201918, guid: b89a1325500454185a8a11f46896ba7b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010285201918, guid: b89a1325500454185a8a11f46896ba7b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.9130835
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010285201918, guid: b89a1325500454185a8a11f46896ba7b, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b89a1325500454185a8a11f46896ba7b, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1825913149
 Prefab:
   m_ObjectHideFlags: 0
@@ -358,12 +400,12 @@ GameObject:
   - 114: {fileID: 2131109538}
   - 114: {fileID: 2131109545}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Main Camera1
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2131109538
 MonoBehaviour:
   m_ObjectHideFlags: 0
