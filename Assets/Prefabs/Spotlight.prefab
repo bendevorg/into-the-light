@@ -53,7 +53,7 @@ Light:
   serializedVersion: 7
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3.98
+  m_Intensity: 4
   m_Range: 52
   m_SpotAngle: 25
   m_CookieSize: 10
@@ -121,6 +121,9 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 256
+  maxIntensity: 24.47
+  maxAngle: 3.98
+  speedToCreate: 0.3
   bordinhaPercentual: 15
 --- !u!136 &136000013824548792
 CapsuleCollider:
