@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(Light))]
-public class Mirror : ReflectEntity {
+public class Mirror : MonoBehaviour {
 
 	public Light mirrorLight;
 
