@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent (typeof (PlayerController))]
-public class Player : MonoBehaviour {
+public class Player : LivingEntity {
 
 	public float moveSpeed;
 
@@ -11,7 +11,7 @@ public class Player : MonoBehaviour {
 	Vector3 moveVelocity;
 	// CameraFollow cameraScript;
 
-	void Start () {
+	protected override void Start () {
 		controller = GetComponent<PlayerController>();
 		viewCamera = Camera.main;
 		// cameraScript = viewCamera.GetComponent<CameraFollow>();

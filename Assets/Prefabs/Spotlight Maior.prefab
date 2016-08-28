@@ -9,53 +9,53 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1000014082243572}
+  m_RootGameObject: {fileID: 1000010210920422}
   m_IsPrefabParent: 1
---- !u!1 &1000014082243572
+--- !u!1 &1000010210920422
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 4000010396556418}
-  - 108: {fileID: 108000013029122590}
-  - 114: {fileID: 114000012876101778}
-  - 114: {fileID: 114000010486278832}
-  - 114: {fileID: 114000012613870682}
+  - 4: {fileID: 4000011254119232}
+  - 108: {fileID: 108000011457020110}
+  - 114: {fileID: 114000014261577434}
+  - 136: {fileID: 136000012769782400}
+  - 114: {fileID: 114000010199726326}
   m_Layer: 0
-  m_Name: Mirror
+  m_Name: Spotlight Maior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4000010396556418
+--- !u!4 &4000011254119232
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014082243572}
-  m_LocalRotation: {x: -0.0993879, y: -0.7000872, z: -0.0993879, w: 0.7000872}
-  m_LocalPosition: {x: -0.07, y: 0.86, z: -0.45285708}
-  m_LocalScale: {x: 3.8142872, y: 1.4285713, z: 1.4285718}
-  m_LocalEulerAnglesHint: {x: -16.16, y: -90, z: 0}
+  m_GameObject: {fileID: 1000010210920422}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.7, y: 5.39, z: -0.83}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!108 &108000013029122590
+--- !u!108 &108000011457020110
 Light:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014082243572}
+  m_GameObject: {fileID: 1000010210920422}
   m_Enabled: 1
   serializedVersion: 7
   m_Type: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 8
-  m_Range: 40
-  m_SpotAngle: 15.5
+  m_Color: {r: 1, g: 0.94016236, b: 0.732, a: 1}
+  m_Intensity: 3.98
+  m_Range: 24.47
+  m_SpotAngle: 80
   m_CookieSize: 10
   m_Shadows:
     m_Type: 1
@@ -77,45 +77,27 @@ Light:
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114000010486278832
+--- !u!114 &114000010199726326
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014082243572}
+  m_GameObject: {fileID: 1000010210920422}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62fb2ebd9e7f143c5acb2454e5b8a5f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 68548f648a61244748d681022407d440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mirrorLight: {fileID: 0}
---- !u!114 &114000012613870682
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 256
+  bordinhaPercentual: 15
+--- !u!114 &114000014261577434
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014082243572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee331ae734daf42038659cd3c9a336ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  viewRadius: 24.47
-  viewAngle: 0
-  targetMask:
-    serializedVersion: 2
-    m_Bits: 0
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 512
-  visibleTargets: []
-  meshResolution: 0.45
---- !u!114 &114000012876101778
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014082243572}
+  m_GameObject: {fileID: 1000010210920422}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dafc90245bfe9e2408e358f71deace2a, type: 3}
@@ -140,3 +122,16 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0, z: 0, w: 0}
   - {x: 0, y: 0, z: 0, w: 0}
+--- !u!136 &136000012769782400
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010210920422}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.4
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
