@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour {
     int enemiesRemainingAlive;
     float nextSpawnTime;
 
-    public MapGenerator map;
+    MapGenerator map;
 
     float timeBetweenCampingChecks = 2;
 	float campThresholdDistance = 1.5f;
@@ -26,8 +26,11 @@ public class Spawner : MonoBehaviour {
 
 	bool isDisabled;
 
+	public event System.Action<int> OnNewWave;
+
     void Start(){
         playerEntity = FindObjectOfType<Player> ();
+        map = GameObject.FindGameObjectWithTag("Map").GetComponent<MapGenerator>();
 		playerT = playerEntity.transform;
 
 		nextCampCheckTime = timeBetweenCampingChecks + Time.time;
@@ -95,14 +98,23 @@ public class Spawner : MonoBehaviour {
 		}
 	}
 
+    void ResetPlayerPosition() {
+		playerT.position = map.GetTileFromPosition (Vector3.zero).position + Vector3.up * 3;
+	}
+
 	void NextWave() {
 		currentWaveNumber ++;
-		print ("Wave: " + currentWaveNumber);
+
 		if (currentWaveNumber - 1 < waves.Length) {
 			currentWave = waves [currentWaveNumber - 1];
 
 			enemiesRemainingToSpawn = currentWave.enemyCount;
 			enemiesRemainingAlive = enemiesRemainingToSpawn;
+
+			if (OnNewWave != null) {
+				OnNewWave(currentWaveNumber);
+			}
+			ResetPlayerPosition();
 		}
 	}
 

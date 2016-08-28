@@ -26,7 +26,7 @@ GameObject:
   - 114: {fileID: 114000012970081928}
   - 114: {fileID: 114000012428819892}
   - 114: {fileID: 114000013043577474}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 266c5cddef66a4abba4666da6749d880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingHealth: 100
   moveSpeed: 7
 --- !u!114 &114000012970081928
 MonoBehaviour:

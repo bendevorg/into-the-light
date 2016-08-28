@@ -12,10 +12,11 @@ public class SpotlightSpawner : MonoBehaviour {
 	public float minDurationTime;
 	public float maxDurationTime;
 
-	public MapGenerator maps;
+	MapGenerator maps;
 
 	// Use this for initialization
 	void Start () {
+		maps = GameObject.FindGameObjectWithTag("Map").GetComponent<MapGenerator>();
 		StartCoroutine(SpawnController());
 	}
 

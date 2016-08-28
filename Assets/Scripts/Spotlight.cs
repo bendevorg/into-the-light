@@ -5,17 +5,25 @@ using System.Collections;
 public class Spotlight : MonoBehaviour {
 
 	public LayerMask collisionMask;
+	public LayerMask lightMask;
 	CapsuleCollider spotlightCollider;
 	Light spotlightLight;
 
 	public float maxIntensity;
 	public float maxAngle;
 	public float speedToCreate;
+	
+	Transform player;
+
+	float maxRadius;
+
+	bool hasPlayer = false;
 
 	[Range(0,100)]
 	public float bordinhaPercentual;
 
 	public void Create(float duration){
+		player = GameObject.FindGameObjectWithTag("Player").transform;
 		StartCoroutine("CreateSpotlight", duration);
 	}
 
@@ -50,16 +58,17 @@ public class Spotlight : MonoBehaviour {
 
 		yield return new WaitForSeconds(duration);
 
-		print('b');
-
-		while(spotlightLight.intensity > 0 && spotlightLight.spotAngle > 0){
-
-			print('a');
+		while(Mathf.Round(spotlightLight.intensity) != 0 && Mathf.Round(spotlightLight.spotAngle) != 0){
 			spotlightLight.intensity = Mathf.Lerp(spotlightLight.intensity, 0, speedToCreate);
 			spotlightLight.spotAngle = Mathf.Lerp(spotlightLight.spotAngle, 0, speedToCreate);
 			yield return null;
 
 		}
+        
+		if (hasPlayer){
+			player.GetComponent<MirrorController>().SetLight(false);
+		}
+
 		Destroy(this.gameObject);
 		yield return null;
 
@@ -71,17 +80,27 @@ public class Spotlight : MonoBehaviour {
 		float radius = tan * distance;
 
 		spotlightCollider.radius = radius * (1-(bordinhaPercentual/100));
+		maxRadius = spotlightCollider.radius;
 	}
 
 	void OnTriggerEnter(Collider collider) {
         if (collider.GetComponent<MirrorController>()) {
 			collider.GetComponent<MirrorController>().SetLight(true);
-		}
+			hasPlayer = true;
+		} 
+    }
+
+	void OnTriggerStay(Collider collider) {
+        if (collider.GetComponent<MirrorController>()) {
+			collider.GetComponent<MirrorController>().SetLight(true);
+			hasPlayer = true;
+		} 
     }
 
 	void OnTriggerExit(Collider collider) {
         if (collider.GetComponent<MirrorController>()) {
 			collider.GetComponent<MirrorController>().SetLight(false);
+			hasPlayer = false;
 		}
     }
 }

@@ -121,8 +121,11 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 256
-  maxIntensity: 24.47
-  maxAngle: 3.98
+  lightMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  maxIntensity: 3.98
+  maxAngle: 24.47
   speedToCreate: 0.3
   bordinhaPercentual: 15
 --- !u!136 &136000013824548792
