@@ -6,16 +6,20 @@ public class Mirror : MonoBehaviour {
 	[HideInInspector]
 	public Light mirrorLight;
 
-	AudioSource myAudioSource;
+	SoundManager soundManager;
 
 	void Awake(){
 		if(GetComponent<Light>() != null){
 			mirrorLight = GetComponent<Light>();
 		}
+		soundManager = GetComponent<SoundManager>();
 	}
 
 	public void Reflect(bool reflectStatus){
 		mirrorLight.enabled = reflectStatus;
+		if (!reflectStatus){
+			soundManager.Stop();
+		}
 	}
 
 

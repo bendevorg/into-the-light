@@ -5,7 +5,11 @@ public class DropPickup : MonoBehaviour {
 
 	public Pickup pickup;
 	public float lifeTime;
-	public int pickupAmountPerDrop;
+	public int maxPickupAmountPerDrop;
+	public int minPickupAmountPerDrop;
+	int pickupAmountPerDrop;
+
+	public int pickupPoints;
 
 	float pickupRadius;
 
@@ -14,6 +18,7 @@ public class DropPickup : MonoBehaviour {
 	
 		GetComponent<LivingEntity>().OnDeath += CreatePickups;
 		pickupRadius = pickup.GetComponent<SphereCollider>().radius;
+		pickupAmountPerDrop = Random.Range(minPickupAmountPerDrop, maxPickupAmountPerDrop);
 
 	}
 
@@ -21,10 +26,13 @@ public class DropPickup : MonoBehaviour {
 	void CreatePickups(){
 
 		while (pickupAmountPerDrop > 0){
-			Vector3 position = new Vector3(transform.position.x + pickupRadius + Random.Range(0.0f, pickupRadius * 5.0f), transform.position.y + pickupRadius, transform.position.z + pickupRadius + Random.Range(0.0f, pickupRadius * 5.0f));
+
+			Vector3 position = new Vector3(transform.position.x + pickupRadius + Random.Range(0.0f, pickupRadius * 5.0f), pickupRadius/2, transform.position.z + pickupRadius + Random.Range(0.0f, pickupRadius * 5.0f));
 			Pickup newPickup = Instantiate(pickup, position, Quaternion.identity) as Pickup;
 			newPickup.Lifetime(lifeTime);
+			newPickup.Points(pickupPoints);
 			pickupAmountPerDrop--;
+
 		}
 
 	}

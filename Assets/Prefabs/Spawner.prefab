@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - enemyCount: 10
+  - enemyCount: 1
     timeBetweenSpawns: 5
   - enemyCount: 20
     timeBetweenSpawns: 3

@@ -221,6 +221,7 @@ MonoBehaviour:
   fadeOutTime: 0.03
   maxVolume: 1
   playing: 0
+  isFadeBugged: 1
 --- !u!136 &136000013824548792
 CapsuleCollider:
   m_ObjectHideFlags: 1

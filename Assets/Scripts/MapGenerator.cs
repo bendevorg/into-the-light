@@ -29,6 +29,10 @@ public class MapGenerator : MonoBehaviour {
 
 	public Map currentMap;
 
+	bool firstMap = true;
+
+	public bool canSpawn;
+
 	void Awake(){
 
 		FindObjectOfType<Spawner> ().OnNewWave += OnNewWave;
@@ -37,10 +41,38 @@ public class MapGenerator : MonoBehaviour {
 
 	void OnNewWave(int waveNumber) {
 		mapIndex = waveNumber - 1;
-		GenerateMap ();
+		if (mapIndex < maps.Length){
+			//StartCoroutine(GenerateNewWave());
+			GenerateMap();
+		} else {
+			OnNewWave(1);
+		}
+	}
+
+	IEnumerator GenerateNewWave(){
+
+		if (!firstMap){
+
+			canSpawn = false;
+			int count = 5;
+
+			while (count > 0){
+				print("New wave in: " + count + " seconds.");
+				yield return new WaitForSeconds(1f);
+				count--;
+			}
+
+		}
+
+		firstMap = false;
+
+		GenerateMap();
+
 	}
 
 	public void GenerateMap(){
+		canSpawn = true;
+		//GameController.gameController.Reset();
 
 		currentMap = maps[mapIndex];
 		tileMap = new Transform[currentMap.mapSize.x,currentMap.mapSize.y];

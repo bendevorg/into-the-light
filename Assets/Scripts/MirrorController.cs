@@ -4,12 +4,8 @@ using System.Collections;
 public class MirrorController : MonoBehaviour {
 
 	public Mirror playerMirror;
-	Mirror currentMirror;
 
-	void Awake(){
-	
-
-	}
+	[HideInInspector] public Mirror currentMirror;
 
 	void Start(){
 

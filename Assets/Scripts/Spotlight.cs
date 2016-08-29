@@ -118,7 +118,6 @@ public class Spotlight : MonoBehaviour {
         if (collider.GetComponent<MirrorController>()) {
 			collider.GetComponent<MirrorController>().SetLight(false);
 			hasPlayer = false;
-
 		} 
     }
 }

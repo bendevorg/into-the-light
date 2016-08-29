@@ -93,6 +93,7 @@ public class PlayerController : MonoBehaviour {
 		// print("instantiou");
 
 		special.GetComponent<SpecialController>().StartSpecial();
+
 		// yield return null;
 	}
 

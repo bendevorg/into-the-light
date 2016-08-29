@@ -26,8 +26,8 @@ GameObject:
   - 114: {fileID: 114000012970081928}
   - 114: {fileID: 114000012428819892}
   - 114: {fileID: 114000013043577474}
-  - 82: {fileID: 82000013847340876}
-  - 114: {fileID: 114000014007303808}
+  - 82: {fileID: 82000012638420830}
+  - 114: {fileID: 114000010606879742}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -161,7 +161,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!82 &82000013847340876
+--- !u!82 &82000012638420830
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -235,6 +235,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114000010606879742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010578723174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5b161f056c714fd8a5d5c1a9f0d8eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  fadeInTime: 1
+  fadeOutTime: 1
+  maxVolume: 1
+  playing: 0
+  isFadeBugged: 0
 --- !u!114 &114000012428819892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -298,6 +315,7 @@ MonoBehaviour:
   fadeOutTime: 1
   maxVolume: 1
   playing: 0
+  currentMirror: {fileID: 0}
 --- !u!136 &136000012496286066
 CapsuleCollider:
   m_ObjectHideFlags: 1
