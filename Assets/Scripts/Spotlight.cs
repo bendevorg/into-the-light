@@ -2,6 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof(CapsuleCollider))]
+[RequireComponent(typeof(AudioSource))]
 public class Spotlight : MonoBehaviour {
 
 	public LayerMask collisionMask;
@@ -12,6 +13,7 @@ public class Spotlight : MonoBehaviour {
 	public float maxIntensity;
 	public float maxAngle;
 	public float speedToCreate;
+	public float speedToDestroy;
 	
 	Transform player;
 
@@ -22,8 +24,11 @@ public class Spotlight : MonoBehaviour {
 	[Range(0,100)]
 	public float bordinhaPercentual;
 
+	SoundManager soundManager;
+
 	public void Create(float duration){
 		player = GameObject.FindGameObjectWithTag("Player").transform;
+		soundManager = GetComponent<SoundManager>();
 		StartCoroutine("CreateSpotlight", duration);
 	}
 
@@ -58,9 +63,13 @@ public class Spotlight : MonoBehaviour {
 
 		yield return new WaitForSeconds(duration);
 
+		if (soundManager.playing){
+			soundManager.Stop();
+		}
+
 		while(Mathf.Round(spotlightLight.intensity) != 0 && Mathf.Round(spotlightLight.spotAngle) != 0){
-			spotlightLight.intensity = Mathf.Lerp(spotlightLight.intensity, 0, speedToCreate);
-			spotlightLight.spotAngle = Mathf.Lerp(spotlightLight.spotAngle, 0, speedToCreate);
+			//spotlightLight.intensity = Mathf.Lerp(spotlightLight.intensity, 0, speedToDestroy);
+			//spotlightLight.spotAngle = Mathf.Lerp(spotlightLight.spotAngle, 0, speedToDestroy);
 			yield return null;
 
 		}
@@ -87,6 +96,10 @@ public class Spotlight : MonoBehaviour {
         if (collider.GetComponent<MirrorController>()) {
 			collider.GetComponent<MirrorController>().SetLight(true);
 			hasPlayer = true;
+
+			if (!soundManager.playing){
+				soundManager.Play();
+			}
 		} 
     }
 
@@ -94,13 +107,18 @@ public class Spotlight : MonoBehaviour {
         if (collider.GetComponent<MirrorController>()) {
 			collider.GetComponent<MirrorController>().SetLight(true);
 			hasPlayer = true;
-		} 
+			if (!soundManager.playing){
+				soundManager.Play();
+			}
+		}
+
     }
 
 	void OnTriggerExit(Collider collider) {
         if (collider.GetComponent<MirrorController>()) {
 			collider.GetComponent<MirrorController>().SetLight(false);
 			hasPlayer = false;
-		}
+
+		} 
     }
 }

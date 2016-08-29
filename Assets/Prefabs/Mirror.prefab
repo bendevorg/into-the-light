@@ -53,7 +53,7 @@ Light:
   serializedVersion: 7
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 8
+  m_Intensity: 4
   m_Range: 40
   m_SpotAngle: 15.5
   m_CookieSize: 10
@@ -121,15 +121,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dafc90245bfe9e2408e358f71deace2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SampleCount: 1
+  SampleCount: 3
   ScatteringCoef: 1
-  ExtinctionCoef: 0
+  ExtinctionCoef: 0.1
   SkyboxExtinctionCoef: 0
   MieG: 0
   HeightFog: 0
-  HeightScale: 0.5
+  HeightScale: 0
   GroundLevel: 0
-  Noise: 1
+  Noise: 0
   NoiseScale: 41.21
   NoiseIntensity: 23.23
   NoiseIntensityOffset: 0.3

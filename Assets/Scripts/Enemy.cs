@@ -22,15 +22,20 @@ public class Enemy : LivingEntity {
 	float targetCollisionRadius;
 
 	// Ajustar isso dependendo do range do carinha
-	float attackDistanceThreshold = .5f;
+	float attackDistanceThreshold = 5.5f;
+
+	public float attackCooldown;
 
 	bool hasTarget;
+
+	AttackController attackController;
 
 	protected override void Start () {
 		base.Start();
 		rend = GetComponent<Renderer>();
 
 		pathfinder = GetComponent<NavMeshAgent> ();
+		attackController = GetComponent<AttackController>();
 
 		if (GameObject.FindGameObjectWithTag ("Player") != null) {
 			currentState = State.Chasing;
@@ -44,7 +49,12 @@ public class Enemy : LivingEntity {
 			targetCollisionRadius = target.GetComponent<CapsuleCollider> ().radius;
 
 			StartCoroutine (UpdatePath ());
+			StartCoroutine (Attack ());
 		}
+	}
+
+	void Update(){
+		transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
 	}
 
 	void OnTargetDeath() {
@@ -83,10 +93,30 @@ public class Enemy : LivingEntity {
 				Vector3 targetPosition = target.position - dirToTarget * (myCollisionRadius + targetCollisionRadius + attackDistanceThreshold/2);
 				if (!dead) {
 					pathfinder.SetDestination (targetPosition);
+					transform.LookAt(targetPosition);
 				}
 			}
 			yield return new WaitForSeconds(refreshRate);
 		}
+	}
+
+	IEnumerator Attack(){
+
+		while (hasTarget){
+
+			yield return new WaitForSeconds(attackCooldown);
+			currentState = State.Attacking;
+
+			Vector3 dirToTarget = (target.position - transform.position).normalized;
+			if (!dead){
+
+				attackController.Shoot();
+				yield return null;
+
+			}
+
+		}
+
 	}
 
 }

@@ -35,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011871905444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.46555185, y: -2.8905096, z: -8.109173}
+  m_LocalPosition: {x: 0, y: -2.8905096, z: -8.109173}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -72,7 +72,8 @@ MonoBehaviour:
   spotlightHeight: 20
   spotlight: {fileID: 114000011917535252, guid: 17992cc5758cf4d31aa4c6f50857f3b0,
     type: 2}
-  minSpawnTime: 2
-  maxSpawnTime: 5
+  minSpawnTime: 10
+  maxSpawnTime: 20
   minDurationTime: 1
   maxDurationTime: 6
+  maxTilesDistanceFromThePlayer: 6
