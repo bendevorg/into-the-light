@@ -14,6 +14,12 @@ public class LivingEntity : MonoBehaviour, IDamageable {
 	}
 	
 	public virtual void TakeHit(float damage, Vector3 hitPoint, Vector3 hitDirection){
+		
+		TakeDamage(damage);
+	}
+
+	public virtual void TakeDamage(float damage) {
+		CameraShaker.Shake(0.3f, 0.2f);
 		if (health > 0 && !dead) {
 			health -= damage;
 		}
@@ -21,9 +27,9 @@ public class LivingEntity : MonoBehaviour, IDamageable {
 		if (health <= 0 && !dead) {
 			Die();
 		}
-	}
+}
 
-	protected void Die() {
+	public virtual void Die() {
 		dead = true;
 		OnDeath();
 		GameObject.Destroy(gameObject);

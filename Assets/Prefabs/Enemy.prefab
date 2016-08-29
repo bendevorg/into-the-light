@@ -28,6 +28,7 @@ GameObject:
   - 82: {fileID: 82000011078246074}
   - 114: {fileID: 114000014159079556}
   - 114: {fileID: 114000011174938642}
+  - 54: {fileID: 54000013459680258}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Untagged
@@ -146,6 +147,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010388784536}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54000013459680258
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010388784536}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!82 &82000011078246074
 AudioSource:
   m_ObjectHideFlags: 1

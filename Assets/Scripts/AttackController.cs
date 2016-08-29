@@ -15,11 +15,6 @@ public class AttackController : MonoBehaviour {
 	void Start () {
 		soundManager = GetComponent<SoundManager>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
 	public void Shoot(){
 

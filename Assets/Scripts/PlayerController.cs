@@ -17,10 +17,7 @@ public class PlayerController : MonoBehaviour {
 
 	SoundManager soundManager;
 	public GameObject specialGameObject;
-	public float specialMaxSize;
-	public float specialSpeed;
-	public float specialCooldown;
-	bool canSpecial;
+	public bool canSpecial;
 
 	void Start () {
 		canDash = true;
@@ -34,7 +31,14 @@ public class PlayerController : MonoBehaviour {
 			StartCoroutine(Dash());
 		}
 		if(Input.GetButton("Fire2") && canSpecial){
-			StartCoroutine(Special());
+			// canSpecial = false;
+			// print("1");
+			Special();
+			// print("2");
+			
+			
+			// specialGameObject.StartCoroutine(SpecialAttack());
+			// specialGameObject.GetComponent<Special>().StartCoroutine(SpecialAttack());
 		}
 	}
 	
@@ -82,26 +86,14 @@ public class PlayerController : MonoBehaviour {
 
 	}
 
-	IEnumerator Special(){
-		float timer = 0;
-
+	void Special(){
+		// print("entrou special");
 		canSpecial = false;
-
 		GameObject special = Instantiate(specialGameObject, transform.position, transform.rotation) as GameObject;
+		// print("instantiou");
 
-		while(specialMaxSize > special.transform.localScale.x){
-
-			// special.transform.localScale = Vector3.Lerp(special.transform.localScale, );
-			special.transform.localScale += new Vector3(1, 1, 1) * Time.fixedDeltaTime * specialSpeed;
-			Debug.Log("Local scale: " + special.transform.localScale);
-			timer += Time.fixedDeltaTime;
-			yield return null;
-		}
-
-		Destroy(special);
-
-		canSpecial = true;
-		
+		special.GetComponent<SpecialController>().StartSpecial();
 		// yield return null;
 	}
+
 }

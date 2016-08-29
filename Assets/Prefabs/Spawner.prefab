@@ -72,8 +72,8 @@ MonoBehaviour:
   spotlightHeight: 20
   spotlight: {fileID: 114000011917535252, guid: 17992cc5758cf4d31aa4c6f50857f3b0,
     type: 2}
-  minSpawnTime: 10
-  maxSpawnTime: 20
+  minSpawnTime: 4
+  maxSpawnTime: 9
   minDurationTime: 1
   maxDurationTime: 6
   maxTilesDistanceFromThePlayer: 6

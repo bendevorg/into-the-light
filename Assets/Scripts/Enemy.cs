@@ -55,7 +55,9 @@ public class Enemy : LivingEntity {
 	}
 
 	void Update(){
-		transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
+		if (hasTarget) {
+			transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
+		}
 	}
 
 	void OnTargetDeath() {
