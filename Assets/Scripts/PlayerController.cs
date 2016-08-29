@@ -16,9 +16,15 @@ public class PlayerController : MonoBehaviour {
 	bool canDash;
 
 	SoundManager soundManager;
+	public GameObject specialGameObject;
+	public float specialMaxSize;
+	public float specialSpeed;
+	public float specialCooldown;
+	bool canSpecial;
 
 	void Start () {
 		canDash = true;
+		canSpecial = true;
 		myRigidbody = GetComponent<Rigidbody>();
 		soundManager = GetComponent<SoundManager>();
 	}
@@ -26,6 +32,9 @@ public class PlayerController : MonoBehaviour {
 	void Update(){
 		if(Input.GetButton("Fire1") && canDash){
 			StartCoroutine(Dash());
+		}
+		if(Input.GetButton("Fire2") && canSpecial){
+			StartCoroutine(Special());
 		}
 	}
 	
@@ -71,5 +80,28 @@ public class PlayerController : MonoBehaviour {
 
 		canDash = true;
 
+	}
+
+	IEnumerator Special(){
+		float timer = 0;
+
+		canSpecial = false;
+
+		GameObject special = Instantiate(specialGameObject, transform.position, transform.rotation) as GameObject;
+
+		while(specialMaxSize > special.transform.localScale.x){
+
+			// special.transform.localScale = Vector3.Lerp(special.transform.localScale, );
+			special.transform.localScale += new Vector3(1, 1, 1) * Time.fixedDeltaTime * specialSpeed;
+			Debug.Log("Local scale: " + special.transform.localScale);
+			timer += Time.fixedDeltaTime;
+			yield return null;
+		}
+
+		Destroy(special);
+
+		canSpecial = true;
+		
+		// yield return null;
 	}
 }
