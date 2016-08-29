@@ -93,7 +93,6 @@ public class PlayerController : MonoBehaviour {
 
 			// special.transform.localScale = Vector3.Lerp(special.transform.localScale, );
 			special.transform.localScale += new Vector3(1, 1, 1) * Time.fixedDeltaTime * specialSpeed;
-			Debug.Log("Local scale: " + special.transform.localScale);
 			timer += Time.fixedDeltaTime;
 			yield return null;
 		}

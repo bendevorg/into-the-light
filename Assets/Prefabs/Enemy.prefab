@@ -240,6 +240,7 @@ MonoBehaviour:
     type: 2}
   attackCooldown: 3
   waitToAttack: 2
+  enemyPoints: 1000
 --- !u!114 &114000011174938642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,7 +254,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickup: {fileID: 114000012746066430, guid: d6b621ef4da214d3b96686786a838bc4, type: 2}
   lifeTime: 8
-  pickupAmountPerDrop: 5
+  maxPickupAmountPerDrop: 0
+  minPickupAmountPerDrop: 7
+  pickupPoints: 100
 --- !u!114 &114000012458074410
 MonoBehaviour:
   m_ObjectHideFlags: 1

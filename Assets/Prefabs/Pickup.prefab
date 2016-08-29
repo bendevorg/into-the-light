@@ -22,7 +22,6 @@ GameObject:
   - 33: {fileID: 33000010187683612}
   - 135: {fileID: 135000011236928278}
   - 23: {fileID: 23000011581743888}
-  - 54: {fileID: 54000010432588592}
   - 114: {fileID: 114000012746066430}
   m_Layer: 14
   m_Name: Pickup
@@ -80,21 +79,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010986074632}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54000010432588592
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010986074632}
-  serializedVersion: 2
-  m_Mass: 0.3
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &114000012746066430
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -106,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff4082aa38c54dfe8e8953eae73c30d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPlus: 0.5
 --- !u!135 &135000011236928278
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -113,7 +98,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010986074632}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

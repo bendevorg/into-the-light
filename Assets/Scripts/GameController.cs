@@ -4,16 +4,12 @@ using System.Collections.Generic;
 
 public class GameController : MonoBehaviour {
 
-	public static GameController gameController;
-	public List<Transform> visibleTargets;
+	public static GameController gameController = null;
+	static int points;
+	static int wave;
+	static int enemiesRemaning;
 
-	public event System.Action FindTargets;
-
-	public static GameController Game {
-		get{
-			return gameController;
-		}
-	}
+	GameObject player;
 
 	void Awake(){
 		if(gameController != null && gameController != this){
@@ -21,23 +17,39 @@ public class GameController : MonoBehaviour {
 		} else {
 			gameController = this;
 		}
+
 	}
 
-	void Start () {
+	public void Start(){
 		
-		StartCoroutine("GetAllTargets", .2f);
-
 	}
 
-	IEnumerator GetAllTargets(float delay){
+	public void AddPoint(int _points){
+		points += _points;
+	}
 
-		while(true){
-			yield return new WaitForSeconds (delay);
-			visibleTargets = new List<Transform>();
-			if(FindTargets != null){
-				FindTargets();
+	public void Reset(){
+
+		player = GameObject.FindGameObjectWithTag("Player");
+
+		if (player != null){
+			if (player.GetComponent<MirrorController>() != null){
+				if (player.GetComponent<MirrorController>().currentMirror != null){
+					player.GetComponent<MirrorController>().SetLight(false);
+				}
 			}
 		}
-	
+
+		//Spotlight[] spotlights = FindObjectsOfType<Spotlight>();
+		//Pickup[] pickups = FindObjectsOfType<Pickup>();
+
+		//foreach(Spotlight spotlight in spotlights){
+			//Destroy(spotlight.gameObject);
+		//}
+
+		//foreach(Pickup pickup in pickups){
+		//	Destroy(pickup.gameObject);
+		//}
+
 	}
 }

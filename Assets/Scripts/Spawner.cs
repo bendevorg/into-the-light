@@ -83,14 +83,13 @@ public class Spawner : MonoBehaviour {
 		}
 
 		Enemy spawnedEnemy = Instantiate(enemy, spawnTile.position + Vector3.up, Quaternion.identity) as Enemy;
-		spawnedEnemy.GetComponent<LivingEntity>().OnDeath += OnEnemyDeath;
 	}
 
 	void OnPlayerDeath() {
 		isDisabled = true;
 	}
 
-	void OnEnemyDeath() {
+	public void OnEnemyDeath() {
 		enemiesRemainingAlive --;
 
 		if (enemiesRemainingAlive == 0) {

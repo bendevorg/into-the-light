@@ -18,6 +18,8 @@ public class FieldOfView : MonoBehaviour {
 	public float meshResolution;
 	Mirror mirror;
 
+	SoundManager soundManager;
+
 	void Awake() {
 		if(GetComponent<Mirror>() != null){
 			mirror = GetComponent<Mirror>();
@@ -32,7 +34,7 @@ public class FieldOfView : MonoBehaviour {
 	}
 
 	void Start(){
-		//FindTargets += FindVisibleTargets;
+		soundManager = GetComponent<SoundManager>();
 		StartCoroutine ("FindTargetsWithDelay", .2f);
 	}
 
@@ -55,22 +57,15 @@ public class FieldOfView : MonoBehaviour {
 						break;
 					}
 				}
-
-				if(!targetInFieldOfViews){
-					if(targetsInViewRadius[i].GetComponent<Mirror>() != null && targetsInViewRadius[i].GetComponent<Mirror>().mirrorLight.enabled){
-						targetsInViewRadius[i].GetComponent<Mirror>().Reflect(false);
-					}
-				}
-
 			}
 		}
-
 	}
 
 	void DrawFieldOfView(){
 
 		int stepCount = Mathf.RoundToInt(viewAngle * meshResolution);
 		float stepAngleSize = viewAngle/stepCount;
+		bool didItHit = false;
 
 		for(int i=0; i<=stepCount;i++){
 
@@ -85,6 +80,16 @@ public class FieldOfView : MonoBehaviour {
 				} else if(hit.collider.GetComponent<IDamageable>() != null){
 					hit.collider.GetComponent<IDamageable>().TakeHit(1, hit.point, rayDirection);
 					CameraShaker.Shake(0.3f, 0.2f);
+					didItHit = true;
+				}
+			}
+			if (didItHit){
+				if(!soundManager.playing){
+					soundManager.Play();
+				}
+			} else {
+				if(soundManager.playing){
+					soundManager.Stop();
 				}
 			}	
 		}

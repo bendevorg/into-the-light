@@ -38,15 +38,21 @@ public class SpotlightSpawner : MonoBehaviour {
 		float minYPosition;
 
 		while(true){
-			yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
 
-			minXPosition = playerT.position.x - maxTilesDistanceFromThePlayer * maps.tileSize > -maps.currentMap.mapSize.x/2 ? playerT.position.x - maxTilesDistanceFromThePlayer * maps.tileSize : -maps.currentMap.mapSize.x/2;
-			maxXPosition = playerT.position.x + maxTilesDistanceFromThePlayer * maps.tileSize < maps.currentMap.mapSize.x/2 ? playerT.position.x + maxTilesDistanceFromThePlayer * maps.tileSize : maps.currentMap.mapSize.x/2;
+			if(maps.canSpawn) {
 
-			minYPosition = playerT.position.z - maxTilesDistanceFromThePlayer * maps.tileSize > -maps.currentMap.mapSize.y/2 ? playerT.position.z - maxTilesDistanceFromThePlayer * maps.tileSize : -maps.currentMap.mapSize.y/2;
-			maxYPosition = playerT.position.z + maxTilesDistanceFromThePlayer * maps.tileSize < maps.currentMap.mapSize.y/2 ? playerT.position.z + maxTilesDistanceFromThePlayer * maps.tileSize : maps.currentMap.mapSize.y/2;
+				yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
 
-			SpawnSpotlight(new Vector3(Random.Range(minXPosition,maxXPosition), spotlightHeight, Random.Range(minYPosition,maxYPosition)), Random.Range(minDurationTime, maxDurationTime));
+				minXPosition = playerT.position.x - maxTilesDistanceFromThePlayer * maps.tileSize > -maps.currentMap.mapSize.x/2 ? playerT.position.x - maxTilesDistanceFromThePlayer * maps.tileSize : -maps.currentMap.mapSize.x/2;
+				maxXPosition = playerT.position.x + maxTilesDistanceFromThePlayer * maps.tileSize < maps.currentMap.mapSize.x/2 ? playerT.position.x + maxTilesDistanceFromThePlayer * maps.tileSize : maps.currentMap.mapSize.x/2;
+
+				minYPosition = playerT.position.z - maxTilesDistanceFromThePlayer * maps.tileSize > -maps.currentMap.mapSize.y/2 ? playerT.position.z - maxTilesDistanceFromThePlayer * maps.tileSize : -maps.currentMap.mapSize.y/2;
+				maxYPosition = playerT.position.z + maxTilesDistanceFromThePlayer * maps.tileSize < maps.currentMap.mapSize.y/2 ? playerT.position.z + maxTilesDistanceFromThePlayer * maps.tileSize : maps.currentMap.mapSize.y/2;
+
+				SpawnSpotlight(new Vector3(Random.Range(minXPosition,maxXPosition), spotlightHeight, Random.Range(minYPosition,maxYPosition)), Random.Range(minDurationTime, maxDurationTime));
+			
+			}
+			
 		}
 
 	}

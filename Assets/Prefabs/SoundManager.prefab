@@ -131,3 +131,4 @@ MonoBehaviour:
   fadeOutTime: 0
   maxVolume: 0.1
   playing: 1
+  isFadeBugged: 0

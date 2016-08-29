@@ -23,6 +23,10 @@ public class LivingEntity : MonoBehaviour, IDamageable {
 		}
 	}
 
+	public void AddHealth(float healthPlus){
+		health = healthPlus;
+	}
+
 	protected void Die() {
 		dead = true;
 		OnDeath();

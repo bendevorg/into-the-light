@@ -31,6 +31,10 @@ public class Enemy : LivingEntity {
 
 	AttackController attackController;
 
+	Spawner spawner;
+
+	public int enemyPoints;
+
 	protected override void Start () {
 		base.Start();
 		rend = GetComponent<Renderer>();
@@ -51,7 +55,15 @@ public class Enemy : LivingEntity {
 
 			StartCoroutine (UpdatePath ());
 			StartCoroutine (Attack ());
+
+			spawner = FindObjectOfType<Spawner>();
+			GetComponent<LivingEntity>().OnDeath += spawner.OnEnemyDeath;
+			GetComponent<LivingEntity>().OnDeath += AddPoints;
 		}
+	}
+
+	void AddPoints(){
+		GameController.gameController.AddPoint(enemyPoints);
 	}
 
 	void Update(){

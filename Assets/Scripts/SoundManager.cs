@@ -16,6 +16,8 @@ public class SoundManager : MonoBehaviour {
 
 	bool fade = false;
 
+	public bool isFadeBugged;
+
 	// Use this for initialization
 	void Start () {
 		audioSource = GetComponent<AudioSource>();
@@ -35,14 +37,25 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	public void Play(){
+		
 		playing = true;
-		StartCoroutine(FadeIn());
+		if(!isFadeBugged){
+			StopCoroutine(FadeOut());
+			StartCoroutine(FadeIn());
+		} else {
+			audioSource.Play();
+		}
 	}
 
 	public void Stop(){
 		if (playing){
 			playing = false;
-			StartCoroutine(FadeOut());
+			if (!isFadeBugged){
+				StopCoroutine(FadeIn());
+				StartCoroutine(FadeOut());
+			} else {
+				audioSource.Stop();
+			}
 		}
 	}
 
