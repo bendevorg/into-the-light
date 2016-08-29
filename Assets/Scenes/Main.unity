@@ -11201,7 +11201,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 1000011871905444, guid: 1dfdc434d1c8a4e6dba9a4104fe7bb8f, type: 2}
       propertyPath: m_IsActive
       value: 1
