@@ -59,9 +59,13 @@ public class Enemy : LivingEntity {
 		rend.material.Lerp(black, white, relativeHealth);
 
 		if (damage >= health && !dead) {
+			GameObject deathEffectObject = Instantiate(deathEffect.gameObject, transform.position, deathEffect.transform.rotation) as GameObject;
+
+			Destroy(deathEffectObject, deathEffect.startLifetime + deathEffect.duration);
+			idleEffect.transform.parent = deathEffectObject.transform;
 			idleEffect.Stop();
-			deathEffect.Play();
-			Destroy(this.gameObject, deathEffect.startLifetime + deathEffect.duration);
+			hitEffect.transform.parent = deathEffectObject.transform;
+			hitEffect.Stop();
 		} else if(!dead){
 			hitEffect.transform.rotation = Quaternion.FromToRotation(Vector3.forward, hitDirection);
 			hitEffect.Play();

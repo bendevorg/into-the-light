@@ -84,6 +84,7 @@ public class FieldOfView : MonoBehaviour {
 					hit.collider.GetComponent<Mirror>().Reflect(true);
 				} else if(hit.collider.GetComponent<IDamageable>() != null){
 					hit.collider.GetComponent<IDamageable>().TakeHit(1, hit.point, rayDirection);
+					CameraShaker.Shake(0.3f, 0.2f);
 				}
 			}	
 		}
