@@ -48,16 +48,10 @@ public class SoundManager : MonoBehaviour {
 
 	IEnumerator FadeOut () {
 
-		print("Fade Time:" + fadeOutTime);
-
         while (audioSource.volume > 0.1f) {
 			audioSource.volume = Mathf.Lerp(audioSource.volume, 0, fadeOutTime);
-			print("Volume: " + audioSource.volume);
             yield return null;
         }
-
-		print("a");
-		print(audioSource.volume);
 
         audioSource.Stop ();
         audioSource.volume = 0;

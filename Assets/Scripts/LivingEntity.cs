@@ -25,6 +25,7 @@ public class LivingEntity : MonoBehaviour, IDamageable {
 
 	protected void Die() {
 		dead = true;
+		OnDeath();
 		GameObject.Destroy(gameObject);
 	}
 }

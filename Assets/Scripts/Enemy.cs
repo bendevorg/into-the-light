@@ -25,6 +25,7 @@ public class Enemy : LivingEntity {
 	float attackDistanceThreshold = 5.5f;
 
 	public float attackCooldown;
+	public float waitToAttack;
 
 	bool hasTarget;
 
@@ -65,7 +66,6 @@ public class Enemy : LivingEntity {
 	public override void TakeHit (float damage, Vector3 hitPoint, Vector3 hitDirection)
 	{
 		float relativeHealth = 1 - (health/startingHealth);
-		//print(relativeHealth);
 		rend.material.Lerp(black, white, relativeHealth);
 
 		if (damage >= health && !dead) {
@@ -104,6 +104,7 @@ public class Enemy : LivingEntity {
 
 		while (hasTarget){
 
+			currentState = State.Chasing;
 			yield return new WaitForSeconds(attackCooldown);
 			currentState = State.Attacking;
 

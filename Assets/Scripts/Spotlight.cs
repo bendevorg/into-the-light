@@ -68,8 +68,8 @@ public class Spotlight : MonoBehaviour {
 		}
 
 		while(Mathf.Round(spotlightLight.intensity) != 0 && Mathf.Round(spotlightLight.spotAngle) != 0){
-			//spotlightLight.intensity = Mathf.Lerp(spotlightLight.intensity, 0, speedToDestroy);
-			//spotlightLight.spotAngle = Mathf.Lerp(spotlightLight.spotAngle, 0, speedToDestroy);
+			spotlightLight.intensity = Mathf.Lerp(spotlightLight.intensity, 0, speedToDestroy);
+			spotlightLight.spotAngle = Mathf.Lerp(spotlightLight.spotAngle, 0, speedToDestroy);
 			yield return null;
 
 		}

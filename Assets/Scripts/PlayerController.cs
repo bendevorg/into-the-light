@@ -15,9 +15,12 @@ public class PlayerController : MonoBehaviour {
 	public float dashCooldown;
 	bool canDash;
 
+	SoundManager soundManager;
+
 	void Start () {
 		canDash = true;
 		myRigidbody = GetComponent<Rigidbody>();
+		soundManager = GetComponent<SoundManager>();
 	}
 
 	void Update(){
@@ -51,6 +54,8 @@ public class PlayerController : MonoBehaviour {
 		gameObject.layer = LayerMask.NameToLayer("Ghost");
 
 		canDash = false;
+
+		soundManager.Play();
 
 		while(dashTime > currentTime){
 

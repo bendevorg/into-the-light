@@ -27,6 +27,7 @@ GameObject:
   - 114: {fileID: 114000012458074410}
   - 82: {fileID: 82000011078246074}
   - 114: {fileID: 114000014159079556}
+  - 114: {fileID: 114000011174938642}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Untagged
@@ -156,13 +157,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7e87220586ad64ddfb82918be36477f3, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -238,6 +239,21 @@ MonoBehaviour:
   deathEffect: {fileID: 198000013521829050, guid: 592021d99fbdc42a48177a44c61165df,
     type: 2}
   attackCooldown: 3
+  waitToAttack: 2
+--- !u!114 &114000011174938642
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010388784536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe4df7ff13664ca2bdae0deb6654fb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickup: {fileID: 114000012746066430, guid: d6b621ef4da214d3b96686786a838bc4, type: 2}
+  lifeTime: 8
+  pickupAmountPerDrop: 5
 --- !u!114 &114000012458074410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -268,7 +284,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   fadeInTime: 1
   fadeOutTime: 1
-  maxVolume: 1
+  maxVolume: 0.0001
   playing: 0
 --- !u!136 &136000013792601260
 CapsuleCollider:
