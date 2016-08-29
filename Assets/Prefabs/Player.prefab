@@ -186,6 +186,11 @@ MonoBehaviour:
   dashTime: 0.15
   dashSpeed: 50
   dashCooldown: 2
+  specialGameObject: {fileID: 1000011466215742, guid: 0ff8e5d0989824b94b8c4a218d7de097,
+    type: 2}
+  specialMaxSize: 100
+  specialSpeed: 100
+  specialCooldown: 3
 --- !u!114 &114000013043577474
 MonoBehaviour:
   m_ObjectHideFlags: 1
